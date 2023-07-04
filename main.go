@@ -9,7 +9,7 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
-const version = "0.0.1"
+const version = "0.0.3"
 
 var revision = "HEAD"
 
@@ -18,10 +18,16 @@ func fatal(err error) {
 	os.Exit(1)
 }
 
+func help() string {
+	return `Usage: excel2csv <path>`
+}
+
 func main() {
 	var showVersion bool
+	var showHelp bool
 
 	flag.BoolVar(&showVersion, "version", false, "show version")
+	flag.BoolVar(&showHelp, "help", false, "show help")
 	flag.Parse()
 
 	if showVersion {
@@ -29,8 +35,8 @@ func main() {
 		return
 	}
 
-	if flag.NArg() > 1 {
-		fmt.Fprintf(os.Stderr, "Usage: %s filename\n", os.Args[0])
+	if flag.NArg() != 1 {
+		fmt.Println(help())
 		os.Exit(1)
 	}
 
