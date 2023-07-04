@@ -10,6 +10,7 @@ all: build
 .PHONY: tag
 tag:
 	git tag "v${VERSION}"
+	git push origin "v${VERSION}"
 
 .PHONY: build
 build:
