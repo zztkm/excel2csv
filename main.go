@@ -11,7 +11,7 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
-const version = "0.0.5"
+const version = "0.0.6"
 
 var revision = "HEAD"
 
@@ -60,16 +60,15 @@ Flags:`)
 		return
 	}
 
-	if flag.NArg() < 1 {
+	if fs.NArg() < 1 {
 		fatal(errors.New("please specify excel file path. `excel2csv -h` for more details"))
 	}
 
-	filename := flag.Arg(0)
+	filename := fs.Arg(0)
 
 	f, err := excelize.OpenFile(filename)
 	if err != nil {
-		fmt.Println(err)
-		return
+		fatal(err)
 	}
 	defer func() {
 		// Close the spreadsheet.
