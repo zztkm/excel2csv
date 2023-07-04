@@ -60,7 +60,7 @@ Flags:`)
 		return
 	}
 
-	if flag.NArg() != 1 {
+	if flag.NArg() < 1 {
 		fatal(errors.New("please specify excel file path. `excel2csv -h` for more details"))
 	}
 
