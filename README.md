@@ -2,14 +2,15 @@
 
 ## Usage
 
-run
+simple run
 ```
 excel2csv <path>
 ```
 By default, a file named `[Sheet name].csv` is created
 
+adding prefix to file names:
 ```
-excel2csv hello.xlsx
+excel2csv --prefix foo hello.xlsx
 ```
 
 ## LICENSE
